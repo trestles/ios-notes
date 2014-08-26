@@ -1,0 +1,165 @@
+IOS 7 in Action - IA
+iOS 7 by Tutorials - IT
+Apple Docs:
+   View Controller Programming Guide - AVC
+
+
+1. rebuild iOS knowledge
+Objective C - background: instance variables, methods, class methods
+   - protocols IA54-5
+2. controllers
+   UIViewController - lifecycle
+     - Instantiating a Storyboard’s View Controller Programmatically AVC
+     - Segues Automatically Instantiate the Destination View Controller AVC
+     - Transitioning to a New Storyboard Requires a Programmatic Approach AVC
+     - Displaying a View Controller’s Contents Programmatically AVC
+        how to show:
+           1. Make the view controller the root view controller of a window
+           2. Make it a child of a visible container view controller
+           3. Present it from another visible view controller
+           4. Present it using a popover (iPad only)
+      Anatomy of a Content View Controller AVC
+      Inititalizing A View Controller
+        Initializing a View Controller Loaded from a Storyboard  
+        Initializing View Controllers Programmatically
+      Managing Memory Efficiently AVC
+      Responding to Display-Related Notifications AVC
+         Determining Why a View’s Appearance Changed
+      Using View Controllers in the Responder Chain AVC  
+      Creating Custom Seques
+             
+   UINavigationController - embed in
+     UINavigationItem
+     UITabBarItem, UIBarButtonItem
+
+     318497621659742
+
+
+     // from http://stackoverflow.com/questions/24961671/push-segues-can-only-be-used-by-uinavigationcontroller-error
+     UINavigationController *recordNavigationController = (UINavigationController*)[self.storyboard instantiateViewControllerWithIdentifier:@"RecordNavigationController"];
+     self presentViewController:recordNavigationController animated:YES completion:nil];
+
+   maintain a reference to controller that displays and holds your tasks:
+   @property (weak, nonatomic) id delegate; //IA61  and IA62
+   connectiong controllers in storyboard - IA62
+     - can be done only in context of Navigation Controller
+   prepareForSegue IA64  
+3. views - UIView, UIControl, UIResponder, 
+   subviews, setNeedsDisplay
+   representing pixels
+   capturing events
+     - where are actions defined?
+
+
+  - UIView will delegate much of functionality to Core Animation specifically CALayer
+  - CALayer doesn't handle user interaction
+  - Each UIview has a `layer` property that is an instance of CALayer (known as the backing layer)
+  - UIView is simply a wrapper, providing iOS specific funtionality such as touch handling and high-level interfaces for some of Core Animations low-level functionality
+  - "For simple purposes, we don't really need to deal directly"
+      - "CALayer has a `contents` property" but must be CGImage"
+      - "Core Foundation types behave like Cocoa objects at runtime - known as toll-free-bridging"
+
+4. models
+5. AFNetworking
+6. NSURLSession
+7. UITableView
+    - tableView IA53
+    - dataSource - set to the UIViewController and NOT the UITableView
+    - delegate - set to the UIViewController and NOT the UITableView
+    UITableViewDataSource:
+    - cellForRowAtIndexPath IA56
+      - dequeueReusableCellWithIdentifier
+    - reloadData IA66
+7.5 User Interface text field, button IA59  
+7.75. TweetBook / Accounts Framework IA180
+   ACAccountStore IA182
+     ACAccountType IA182
+     ACAccount IA182
+       accountType
+       credential
+       identifier
+       username
+   - CredentialStore -   
+8. UICollectionView
+9. Autolayout
+  - the status bar and your content IT256
+  - text instead of icons IT260
+  - make way for the content IT261
+  Using Auto Layout for easier layout IT265
+    - think constraints, not frames IT267
+    - enabling AutLayout IT268
+    - Scrolling the Scrolls IT269
+    - Table Views and Auto Layout IT277
+10. UIImage
+11. UIText
+   Text Kit  http://robots.thoughtbot.com/ios-text-kit-basics
+     - text kit architecture IT144
+     - dynamic type IT145
+     - Letterpress Effects IT151
+     - Exclusion Paths IT153
+     - Dynamic Text Formatting and Storage IT155
+        - Subclassing NSTextStorage
+      NSTextStorage, NSLayoutManager, NSTextContainer  
+12. UIKitDynamics
+13. NSAttributedString
+14. UIButton
+15. LoggingIn
+16. UIMapKit
+17. Custom Transitions
+   - animateTransition IT112
+   - transitionDelegate IT113
+
+  4 things
+  1. custom transition
+  2. custom dismissal
+    2.5. using other animation techniques; UIView screenshot, Keyframe animation
+  3. Navigation Controller Transitions
+  4. Interactive Transitions
+
+  9 steps: IT117
+
+  3 protocols:
+    1. UIViewControllerTransitionDelegate
+    2. UIViewControllerAnimatedTransitioning
+    3. UIViewControllerContextTransitioning
+
+
+  - transition API IT115
+  - transition process IT117
+  - spicing up the transition IT118
+
+  Navigation Controller Transitions IT128
+   - adding a flip animation controller IT129
+  Interactive Transitions
+    - adding an interaction controller IT134
+    - wiring it up IT138 
+
+18. Container Controllers
+  https://github.com/objcio/issue-12-custom-container-transitions
+  and 
+  git@github.com:cflesner/CLFContainerViewController.git
+19. Page View Controllers
+
+UIViewControllerAnimatedTransitioning,  transition context, This container view is where the animation actually takes place
+20. Xcode 
+   Standard / Assistant / Version
+  Assistant Editor: command-option-return
+  with Storyboard element selected, command-option-1 through 6
+  Provisioning Profiles 
+
+20.5. Notifications
+  SSL Certificate
+  Keychain Access - Request Certificate from a Known Authority
+  Must request Apple Push from Provisioning Profile
+    - need a PEM file from P12
+  http://joshsymonds.com/blog/2013/07/01/sidekiq-plus-houston-persistent-apple-connection-pooling/  
+  http://joshsymonds.com/blog/2013/10/17/sidekiq-plus-houston-production-ready/
+  Sidekiq integrates with ConnectionPool
+  Sidekiq is ALL about workers
+  do things restart in Sidekiq
+21. UIScrollView
+22. UIPopoverController
+23. UIStoryboard, UIStoryboardSegue
+   - can have multiple storyboards
+24. UIBezierPath
+25. CALayer - for border
