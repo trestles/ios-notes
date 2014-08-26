@@ -1,16 +1,69 @@
+Goal of this is to provide notes to someone who probably codes predominantly in something else but also does iOS work. I like starting with the simplest example to show a concept / pattern and hopefully be able to flesh it out.
+
 IOS 7 in Action - IA
 iOS 7 by Tutorials - IT
+NSHipster Fake Book - FB
 Apple Docs:
    View Controller Programming Guide - AVC
+
+Programming iOS7 - P
+iOS7 Programming Pushing the Limits - PTL   
 
 
 1. rebuild iOS knowledge
 Objective C - background: instance variables, methods, class methods
    - protocols IA54-5
+      - specify in interface
+      - methods would be required
+      - to create a protocol
+
+   - extensions - monkeypatching for Objective-C
+MVC
+
+26. Objective-C
+  interface (.h) / implementation (.m)
+    - in iterface file:
+       public variables
+       public methods (both instance and class)
+       conforms to protocol information
+
+    - in implementation file:   
+      private variables
+      method implementations
+
+
+  calling methods:
+    return type, named arguments
+
+  id type
+  casting
+
+- blocks
+
+
+1.1 Implementing and Using Custom Objects
+1.2 Allocating and Initializing Objects
+1.3 Defining two or more methods with the same name in an Object
+1.4 Defining and Accessing Properties
+1.5 Managing Properties Manually
+1.6 Reusing a Block of Code
+1.7 Communicating with Objects
+1.8 Invoking the Selectors of an Object Dynamically
+1.9 Managing Memory with the iOS SDK
+1.10 Managing untyped Objects
+
+
+
+
 2. controllers
+   instantiating VCs
+     - initWithCoder
+     - initWithNibName - why?
+
    UIViewController - lifecycle
      - Instantiating a Storyboard’s View Controller Programmatically AVC
      - Segues Automatically Instantiate the Destination View Controller AVC
+        - where in the VC lifecycle?
      - Transitioning to a New Storyboard Requires a Programmatic Approach AVC
      - Displaying a View Controller’s Contents Programmatically AVC
         how to show:
@@ -22,18 +75,16 @@ Objective C - background: instance variables, methods, class methods
       Inititalizing A View Controller
         Initializing a View Controller Loaded from a Storyboard  
         Initializing View Controllers Programmatically
-      Managing Memory Efficiently AVC
-      Responding to Display-Related Notifications AVC
+      - Managing Memory Efficiently AVC
+      - Responding to Display-Related Notifications AVC
          Determining Why a View’s Appearance Changed
-      Using View Controllers in the Responder Chain AVC  
-      Creating Custom Seques
+      - Using View Controllers in the Responder Chain AVC  
+      - Creating Custom Seques AVC
              
    UINavigationController - embed in
      UINavigationItem
      UITabBarItem, UIBarButtonItem
-
-     318497621659742
-
+     
 
      // from http://stackoverflow.com/questions/24961671/push-segues-can-only-be-used-by-uinavigationcontroller-error
      UINavigationController *recordNavigationController = (UINavigationController*)[self.storyboard instantiateViewControllerWithIdentifier:@"RecordNavigationController"];
@@ -44,12 +95,21 @@ Objective C - background: instance variables, methods, class methods
    connectiong controllers in storyboard - IA62
      - can be done only in context of Navigation Controller
    prepareForSegue IA64  
+
+2.5.   
 3. views - UIView, UIControl, UIResponder, 
    subviews, setNeedsDisplay
+
+
+  * X,Y coordinates
+  * initWithFrame
+
+
+
    representing pixels
    capturing events
      - where are actions defined?
-
+     - can handle events in a UIViewController OR in UIView subclasses
 
   - UIView will delegate much of functionality to Core Animation specifically CALayer
   - CALayer doesn't handle user interaction
@@ -59,17 +119,79 @@ Objective C - background: instance variables, methods, class methods
       - "CALayer has a `contents` property" but must be CGImage"
       - "Core Foundation types behave like Cocoa objects at runtime - known as toll-free-bridging"
 
-4. models
-5. AFNetworking
-6. NSURLSession
+4. Events
+  - traditionally, events are created and captured at the level of UIViewController
+     - can be be created in Storyboard or in code
+     - in Storyboard, would need to drag from item to UIViewController
+        - does NOT need to have IBAction public interface
+     - 
+  - selectors
+     - example of repeatedly calling selector in IA
+     - registering a selector
+     - simplest selector example   
+5. AFNetworking and Networking
+
+AFNetworking
+   classes:
+      NSURLConnection
+        - AFHTTPRequestOperation
+        - AFHTTPRequestOperationManager
+        - AFURLConnectionOperation
+      NSURLSession
+        - AFHTTPSessionManager
+        - AFURLSessionManager
+      Reachability
+        - AFNetworkReachabilityManager
+      Security
+        - AFSecurityPolicy
+      Serialization
+        - AFURLRRequestSerialization
+        - AFURLResponseSerialization
+      Support Files
+      UIKit
+        - AFNetworkActivityIndicatorManager
+        - UIActivityIndicatorView+AFNetworking
+        - UIAlertView+AFNetworking
+        - UIButton+AFNetworking
+        - UIImageView+AFNetworking
+        - UIProgressView+AFNetworking
+        - UIRefreshControl+AFNetworking
+        - UIWebView+AFNetworking
+NSURLSession
+
+6. Grand Central Dispatch
+  - Dispatching Work Asynchronously to a Background Queue FB31
+  - create a singleton FB33
+   +(instancetype)sharedInstance { 
+     static dispatch_once_t once; 
+     static id _sharedInstance = nil; 
+     dispatch_once(&once, ^{
+        _sharedInstance = [[self alloc] init]; 
+     });
+     return _sharedInstance; 
+   }
+
+   - NSOperation
+
+￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼
+
 7. UITableView
-    - tableView IA53
+    - tableView IA53 / can be named anything
     - dataSource - set to the UIViewController and NOT the UITableView
     - delegate - set to the UIViewController and NOT the UITableView
     UITableViewDataSource:
     - cellForRowAtIndexPath IA56
       - dequeueReusableCellWithIdentifier
+      - how to handle multiple different `types` here
+      - UISearchBar
     - reloadData IA66
+   - accessories in UITableViews
+   custom UITableViewCells
+      - updateCell model
+
+
+7.25 UICollectionView
+
 7.5 User Interface text field, button IA59  
 7.75. TweetBook / Accounts Framework IA180
    ACAccountStore IA182
@@ -158,8 +280,18 @@ UIViewControllerAnimatedTransitioning,  transition context, This container view 
   Sidekiq is ALL about workers
   do things restart in Sidekiq
 21. UIScrollView
+  - contentSize
 22. UIPopoverController
+  - primarily for iPad
 23. UIStoryboard, UIStoryboardSegue
    - can have multiple storyboards
 24. UIBezierPath
+   - can clip to path
 25. CALayer - for border
+26. CLManager / MKMapView  
+    * how to get Latitude and Longitude
+
+27. Better Custom Drawing - PTL91    
+ 
+
+
