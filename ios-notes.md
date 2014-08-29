@@ -1,14 +1,14 @@
 Goal of this is to provide notes to someone who probably codes predominantly in something else but also does iOS work. I like starting with the simplest example to show a concept / pattern and hopefully be able to flesh it out.
 
-IOS 7 in Action - IA
-iOS 7 by Tutorials - IT
-NSHipster Fake Book - FB
+IOS 7 in Action - IA  
+iOS 7 by Tutorials - IT  
+NSHipster Fake Book - FB  
 Apple Docs:
    View Controller Programming Guide - AVC
 
-Programming iOS7 - P
+Programming iOS7 - P  
 iOS7 Programming Pushing the Limits - PTL   
-
+iOS 6 Coobook IC
 
 1. rebuild iOS knowledge
 Objective C - background: instance variables, methods, class methods
@@ -20,37 +20,83 @@ Objective C - background: instance variables, methods, class methods
    - extensions - monkeypatching for Objective-C
 MVC
 
-26. Objective-C
+2. Objective-C
   interface (.h) / implementation (.m)
     - in iterface file:
-       public variables
+       public variables  
+         @property  
+         strong / weak   
        public methods (both instance and class)
+         class methods have hard time managing notion of self
        conforms to protocol information
 
     - in implementation file:   
       private variables
       method implementations
 
-
+    - protocols
+          
   calling methods:
     return type, named arguments
 
   id type
   casting
 
-- blocks
+- blocks IA335-7
+   when defining a block, you're actuall creating a *block literal* ... The term literal comes from the fact that you're writing data "literally" into your code 
+
+```
+^(int a, int b)
+ {
+   int powres = a ** b;
+   return powres;
+}
+```
+
+differences with C funtion  
+1. carat symbol preceding 
+2. return types are automatically infeffered when not defined
+3. there is no function name; we say that block literals are anonymous
+
+as with function and method definitions, the braces indicate the start and end of the block. Blocks can also take arguments and return values just like methods and functions. In a nutshell, block literals encapsulate a bunch of code the same way C functions do, but they also hold some really useful features. 
+
+Block Pointers
+A block pointer isn't any different from an object pointer in the way that you can pass it to functions or create functions that return blocks. In following example:
+
+```
+int(^pow)(int, int) = ^(int a, int b)
+{
+  int powres= a ** b;
+  return powres;
+}
+
+```
+
+The carat symbol ^ replaces the start * that you usually use for declaring variable pointers. The meaning is the same, but by using the caret symbol you're telling the compiler that instead of pointing to  a value, you're pointing to a block of code. 
+
+Blocks are defined in a local scope. In other words, blocks can be anywhere a variable can. The scope is very important when defining blocks because you can access variables from the same enclosing scope where the block is defined. Here's an example: 
+
+```
+-(void)exampleMethod
+{
+  int variableInsideMethod=10;
+  void(^exampleBlock)(void)=^(void){
+    NSLog(@"can access %d", variableInsideMethod);
+  }
+}
+```
 
 
-1.1 Implementing and Using Custom Objects
-1.2 Allocating and Initializing Objects
-1.3 Defining two or more methods with the same name in an Object
-1.4 Defining and Accessing Properties
-1.5 Managing Properties Manually
+1.1 Implementing and Using Custom Objects  
+1.2 Allocating and Initializing Objects  
+1.3 Defining two or more methods with the same name in an Object  
+1.4 Defining and Accessing Properties  
+1.5 Managing Properties Manually  
 1.6 Reusing a Block of Code
-1.7 Communicating with Objects
-1.8 Invoking the Selectors of an Object Dynamically
-1.9 Managing Memory with the iOS SDK
-1.10 Managing untyped Objects
+1.7 Communicating with Objects  
+1.8 Invoking the Selectors of an Object Dynamically  
+1.9 Managing Memory with the iOS SDK  
+1.10 Managing untyped Objects  
 
 
 
