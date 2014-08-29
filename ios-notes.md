@@ -86,6 +86,46 @@ Blocks are defined in a local scope. In other words, blocks can be anywhere a va
 }
 ```
 
+###Block Invocation IA336
+shown:
+
+- how to declare a block
+- how their pointers are assigned
+
+important to understand that, so far, the code inside your blocks hasn't executed at all. 
+
+blocks ARE invoked via:
+
+```
+int pow_result=pow(3,4);
+```
+exact same syntax as function calls. Blocks return a specific type (or none) and take arguments the same way a c function does. 
+
+###Common Usage IA336
+A block represents a unit of executable code that can capture variables of the surrounding scope. This makes blocks ideal for asynchronous invocation; in fact, blocks are used extensively when writing  (1) asynchronous tasks. Also, very handy when it comes to writing (2) multithreading operations. 
+
+Other typical usages:
+
+- running code when an asynchronous task is completed (for example, an HTTP request)
+- handling errors on asynchronous calls
+- handling asynchronous notifications
+- as lambda functions, for iterations (sorting, enumerations, and the like)
+- UIView animations and transitions
+
+###Understanding Automatic Reference Counting
+
+#####Properties and Attributes  IA340
+strong / weak / copy / assign - define how memory is managed on the setter. You use these attributes to tell the compiler about the relationships that you expect. Strong references are a way of owning the variable, meaning that as long as the instance holding the property is alive, the variable will be as well. Weak references can be removed from memory at any time, and the instance has no control over that. 
+
+A retain cycle is a situation in which object A retains object B and object B retains object A at the same time. 
+
+Retain cycles are somewhat dangerous with blocks because all the variables from the surrounding scope you use inside the block will be retained - for example:
+
+```
+[self someMethodWithBlock: ^{
+  [self someOtherMethod];
+}]
+```
 
 1.1 Implementing and Using Custom Objects  
 1.2 Allocating and Initializing Objects  
@@ -131,10 +171,11 @@ Blocks are defined in a local scope. In other words, blocks can be anywhere a va
      UINavigationItem
      UITabBarItem, UIBarButtonItem
      
-
+```
      // from http://stackoverflow.com/questions/24961671/push-segues-can-only-be-used-by-uinavigationcontroller-error
      UINavigationController *recordNavigationController = (UINavigationController*)[self.storyboard instantiateViewControllerWithIdentifier:@"RecordNavigationController"];
      self presentViewController:recordNavigationController animated:YES completion:nil];
+```
 
    maintain a reference to controller that displays and holds your tasks:
    @property (weak, nonatomic) id delegate; //IA61  and IA62
@@ -143,7 +184,7 @@ Blocks are defined in a local scope. In other words, blocks can be anywhere a va
    prepareForSegue IA64  
 
 2.5.   
-3. views - UIView, UIControl, UIResponder, 
+##views - UIView, UIControl, UIResponder, 
    subviews, setNeedsDisplay
 
 
@@ -175,39 +216,43 @@ Blocks are defined in a local scope. In other words, blocks can be anywhere a va
      - example of repeatedly calling selector in IA
      - registering a selector
      - simplest selector example   
-5. AFNetworking and Networking
 
-AFNetworking
-   classes:
-      NSURLConnection
-        - AFHTTPRequestOperation
-        - AFHTTPRequestOperationManager
-        - AFURLConnectionOperation
-      NSURLSession
-        - AFHTTPSessionManager
-        - AFURLSessionManager
-      Reachability
-        - AFNetworkReachabilityManager
-      Security
-        - AFSecurityPolicy
-      Serialization
-        - AFURLRRequestSerialization
-        - AFURLResponseSerialization
-      Support Files
-      UIKit
-        - AFNetworkActivityIndicatorManager
-        - UIActivityIndicatorView+AFNetworking
-        - UIAlertView+AFNetworking
-        - UIButton+AFNetworking
-        - UIImageView+AFNetworking
-        - UIProgressView+AFNetworking
-        - UIRefreshControl+AFNetworking
-        - UIWebView+AFNetworking
-NSURLSession
 
-6. Grand Central Dispatch
+##AFNetworking and Networking
+
+classes:
+
+* NSURLConnection
+  * AFHTTPRequestOperation
+  * AFHTTPRequestOperationManager
+  * AFURLConnectionOperation
+* NSURLSession
+  * AFHTTPSessionManager
+  * AFURLSessionManager
+* Reachability
+  * AFNetworkReachabilityManager
+* Security
+  * AFSecurityPolicy
+* Serialization
+  * AFURLRRequestSerialization
+  * AFURLResponseSerialization
+* Support Files
+* UIKit
+  * AFNetworkActivityIndicatorManager
+  * UIActivityIndicatorView+AFNetworking
+  * UIAlertView+AFNetworking
+  * UIButton+AFNetworking
+  * UIImageView+AFNetworking
+  * UIProgressView+AFNetworking
+  * UIRefreshControl+AFNetworking
+  * UIWebView+AFNetworking
+
+
+## Grand Central Dispatch
   - Dispatching Work Asynchronously to a Background Queue FB31
   - create a singleton FB33
+
+```  
    +(instancetype)sharedInstance { 
      static dispatch_once_t once; 
      static id _sharedInstance = nil; 
@@ -216,30 +261,31 @@ NSURLSession
      });
      return _sharedInstance; 
    }
-
+```
    - NSOperation
 
 ￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼
 
-7. UITableView
-    - tableView IA53 / can be named anything
-    - dataSource - set to the UIViewController and NOT the UITableView
-    - delegate - set to the UIViewController and NOT the UITableView
-    UITableViewDataSource:
-    - cellForRowAtIndexPath IA56
-      - dequeueReusableCellWithIdentifier
-      - how to handle multiple different `types` here
-      - UISearchBar
-    - reloadData IA66
-   - accessories in UITableViews
-   custom UITableViewCells
-      - updateCell model
+## UITableView
+* tableView IA53 / can be named anything
+  * dataSource - set to the UIViewController and NOT the UITableView
+  * delegate - set to the UIViewController and NOT the UITableView
+* UITableViewDataSource:
+  * cellForRowAtIndexPath IA56
+    * dequeueReusableCellWithIdentifier
+    * how to handle multiple different `types` here
+       * UISearchBar
+    * reloadData IA66
+    * accessories in UITableViews
+* custom UITableViewCells
+  * updateCell model
 
 
 7.25 UICollectionView
 
-7.5 User Interface text field, button IA59  
-7.75. TweetBook / Accounts Framework IA180
+## User Interface text field, button IA59  
+
+## TweetBook / Accounts Framework IA180
    ACAccountStore IA182
      ACAccountType IA182
      ACAccount IA182
@@ -248,8 +294,9 @@ NSURLSession
        identifier
        username
    - CredentialStore -   
-8. UICollectionView
-9. Autolayout
+   
+## UICollectionView
+## Autolayout
   - the status bar and your content IT256
   - text instead of icons IT260
   - make way for the content IT261
@@ -315,29 +362,35 @@ UIViewControllerAnimatedTransitioning,  transition context, This container view 
   with Storyboard element selected, command-option-1 through 6
   Provisioning Profiles 
 
-20.5. Notifications
-  SSL Certificate
-  Keychain Access - Request Certificate from a Known Authority
-  Must request Apple Push from Provisioning Profile
+## Notifications
+* SSL Certificate
+* Keychain Access - Request Certificate from a Known Authority
+* Must request Apple Push from Provisioning Profile
     - need a PEM file from P12
   http://joshsymonds.com/blog/2013/07/01/sidekiq-plus-houston-persistent-apple-connection-pooling/  
   http://joshsymonds.com/blog/2013/10/17/sidekiq-plus-houston-production-ready/
   Sidekiq integrates with ConnectionPool
   Sidekiq is ALL about workers
   do things restart in Sidekiq
-21. UIScrollView
-  - contentSize
-22. UIPopoverController
-  - primarily for iPad
-23. UIStoryboard, UIStoryboardSegue
-   - can have multiple storyboards
-24. UIBezierPath
-   - can clip to path
-25. CALayer - for border
-26. CLManager / MKMapView  
-    * how to get Latitude and Longitude
 
-27. Better Custom Drawing - PTL91    
+
+## UIScrollView
+  - contentSize
+
+## UIPopoverController
+  - primarily for iPad
+  
+## UIStoryboard, UIStoryboardSegue
+   - can have multiple storyboards
+
+## UIBezierPath
+   - can clip to path
+
+## CALayer - for border
+## CLManager / MKMapView  
+* how to get Latitude and Longitude
+
+## Better Custom Drawing - PTL91    
  
 
 
