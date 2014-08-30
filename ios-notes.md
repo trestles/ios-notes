@@ -7,10 +7,11 @@ Apple Docs:
    View Controller Programming Guide - AVC
 
 Programming iOS7 - P  
+iOS7 Programming Fundamentals PF
 iOS7 Programming Pushing the Limits - PTL   
 iOS 6 Coobook IC
 
-1. rebuild iOS knowledge
+###rebuild iOS knowledge
 Objective C - background: instance variables, methods, class methods
    - protocols IA54-5
       - specify in interface
@@ -20,8 +21,9 @@ Objective C - background: instance variables, methods, class methods
    - extensions - monkeypatching for Objective-C
 MVC
 
-2. Objective-C
-  interface (.h) / implementation (.m)
+### Objective-C
+
+* interface (.h) / implementation (.m) PF 77-80
     - in iterface file:
        public variables  
          @property  
@@ -30,11 +32,42 @@ MVC
          class methods have hard time managing notion of self
        conforms to protocol information
 
+   
+
     - in implementation file:   
       private variables
       method implementations
 
-    - protocols
+* Class Methods PF81
+* The Secret Life of Classes PF82
+
+* protocols PF272
+* Informal Protocols PF276
+* Optional Methods PF277
+
+* Property Lists PF292
+* The Secret Life of NSObject PF293
+
+Communication Between Objects PF373
+  Visibility by Instantiation PF373
+  Visibility by Relationship PF376
+  Global Visibility PF377
+  Notifications PF378
+  Key-Value Observing PF379
+  Model-View-Controller PF385
+
+
+
+
+declaring a method PF54
+Nesting method calls PF55
+parameter lists PF57
+messages to nil PF59   
+Unrecognized selectors PF60
+Typecasting and the id type PF61
+Messages as Data Type PF65
+C Functions PF67
+CFTypeRefs PF68
           
   calling methods:
     return type, named arguments
@@ -42,7 +75,34 @@ MVC
   id type
   casting
 
-- blocks IA335-7
+The Secret Life of Classes PF82
+The Global Namespace PF84
+
+#####How Instances are created 
+
+* Ready-Made Instances 
+* Instantiation from Scratch PF86
+  * iniialization PF87
+  * designated initializer PF89
+* Nib-based Instantiation PF90
+* Polymorphism PF91
+* The Keyword self PF93
+* The Keyword Super PF97
+* Instance Variables and Accessors 
+* Key-Value Coding PF101
+* Properties PF103
+* How to write an initializer PF104
+* Referring to Instances PF108
+
+
+* Subclassing PF265
+* Categories PF268
+  * splitting a class PF270 
+  * class extensions PF271
+
+
+
+- blocks IA335-7, PF69-72
    when defining a block, you're actuall creating a *block literal* ... The term literal comes from the fact that you're writing data "literally" into your code 
 
 ```
@@ -54,13 +114,14 @@ MVC
 ```
 
 differences with C funtion  
+
 1. carat symbol preceding 
 2. return types are automatically infeffered when not defined
 3. there is no function name; we say that block literals are anonymous
 
 as with function and method definitions, the braces indicate the start and end of the block. Blocks can also take arguments and return values just like methods and functions. In a nutshell, block literals encapsulate a bunch of code the same way C functions do, but they also hold some really useful features. 
 
-Block Pointers
+####Block Pointers
 A block pointer isn't any different from an object pointer in the way that you can pass it to functions or create functions that return blocks. In following example:
 
 ```
@@ -86,7 +147,7 @@ Blocks are defined in a local scope. In other words, blocks can be anywhere a va
 }
 ```
 
-###Block Invocation IA336
+####Block Invocation IA336
 shown:
 
 - how to declare a block
@@ -101,7 +162,7 @@ int pow_result=pow(3,4);
 ```
 exact same syntax as function calls. Blocks return a specific type (or none) and take arguments the same way a c function does. 
 
-###Common Usage IA336
+####Common Usage IA336
 A block represents a unit of executable code that can capture variables of the surrounding scope. This makes blocks ideal for asynchronous invocation; in fact, blocks are used extensively when writing  (1) asynchronous tasks. Also, very handy when it comes to writing (2) multithreading operations. 
 
 Other typical usages:
@@ -112,9 +173,9 @@ Other typical usages:
 - as lambda functions, for iterations (sorting, enumerations, and the like)
 - UIView animations and transitions
 
-###Understanding Automatic Reference Counting
+####Understanding Automatic Reference Counting
 
-#####Properties and Attributes  IA340
+######Properties and Attributes  IA340, PF103 - PF104
 strong / weak / copy / assign - define how memory is managed on the setter. You use these attributes to tell the compiler about the relationships that you expect. Strong references are a way of owning the variable, meaning that as long as the instance holding the property is alive, the variable will be as well. Weak references can be removed from memory at any time, and the instance has no control over that. 
 
 A retain cycle is a situation in which object A retains object B and object B retains object A at the same time. 
