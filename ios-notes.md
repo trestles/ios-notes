@@ -1,42 +1,47 @@
 Goal of this is to provide notes to someone who probably codes predominantly in something else but also does iOS work. I like starting with the simplest example to show a concept / pattern and hopefully be able to flesh it out.
 
-IOS 7 in Action - IA  
-iOS 7 by Tutorials - IT  
-NSHipster Fake Book - FB  
-Apple Docs:
-   View Controller Programming Guide - AVC
+- IOS 7 in Action - IA  
+- iOS 7 by Tutorials - IT  
+- NSHipster Fake Book - FB  
+- Apple Docs:
+   - View Controller Programming Guide - AVC
 
-Programming iOS7 - P  
-iOS7 Programming Fundamentals PF
-iOS7 Programming Pushing the Limits - PTL   
-iOS 6 Coobook IC
+- Programming iOS7 - P  
+- iOS7 Programming Fundamentals PF
+- iOS7 Programming Pushing the Limits - PTL   
+- iOS 6 Coobook IC
 
-###rebuild iOS knowledge
-Objective C - background: instance variables, methods, class methods
+### iOS knowledge
+- Objective C - background: instance variables, methods, class methods
    - protocols IA54-5
       - specify in interface
       - methods would be required
       - to create a protocol
 
    - extensions - monkeypatching for Objective-C
-MVC
+- MVC
+- static methods are only run once
 
 ### Objective-C
 
 * interface (.h) / implementation (.m) PF 77-80
     - in iterface file:
-       public variables  
-         @property  
-         strong / weak   
-       public methods (both instance and class)
-         class methods have hard time managing notion of self
-       conforms to protocol information
+       - public variables  
+         - @property  
+         - strong / weak   
+       - public methods (both instance and class)
+         - class methods have hard time managing notion of self
+       - conforms to protocol information
 
    
 
-    - in implementation file:   
-      private variables
-      method implementations
+- in implementation file:   
+  private variables  
+  method implementations
+
+* Just Enough C PF3-32
+* Object-Based Programming PF33-44
+* Objective C Objects and Messages PF45-73
 
 * Class Methods PF81
 * The Secret Life of Classes PF82
@@ -48,35 +53,35 @@ MVC
 * Property Lists PF292
 * The Secret Life of NSObject PF293
 
-Communication Between Objects PF373
-  Visibility by Instantiation PF373
-  Visibility by Relationship PF376
-  Global Visibility PF377
-  Notifications PF378
-  Key-Value Observing PF379
-  Model-View-Controller PF385
+* Communication Between Objects PF373
+  - Visibility by Instantiation PF373
+  - Visibility by Relationship PF376
+  - Global Visibility PF377
+  - Notifications PF378
+  - Key-Value Observing PF379
+  - Model-View-Controller PF385
 
 
 
 
-declaring a method PF54
-Nesting method calls PF55
-parameter lists PF57
-messages to nil PF59   
-Unrecognized selectors PF60
-Typecasting and the id type PF61
-Messages as Data Type PF65
-C Functions PF67
-CFTypeRefs PF68
+- declaring a method PF54
+- Nesting method calls PF55
+- parameter lists PF57
+- messages to nil PF59   
+- Unrecognized selectors PF60
+- Typecasting and the id type PF61
+- Messages as Data Type PF65
+- C Functions PF67
+- CFTypeRefs PF68
           
-  calling methods:
-    return type, named arguments
+- calling methods:
+  - return type, named arguments
 
-  id type
-  casting
+- id type
+- casting
 
-The Secret Life of Classes PF82
-The Global Namespace PF84
+- The Secret Life of Classes PF82
+- The Global Namespace PF84
 
 #####How Instances are created 
 
@@ -89,7 +94,7 @@ The Global Namespace PF84
 * The Keyword self PF93
 * The Keyword Super PF97
 * Instance Variables and Accessors 
-* Key-Value Coding PF101
+* Key-Value Coding PF101; PTL395-401
 * Properties PF103
 * How to write an initializer PF104
 * Referring to Instances PF108
@@ -163,6 +168,7 @@ int pow_result=pow(3,4);
 exact same syntax as function calls. Blocks return a specific type (or none) and take arguments the same way a c function does. 
 
 ####Common Usage IA336
+
 A block represents a unit of executable code that can capture variables of the surrounding scope. This makes blocks ideal for asynchronous invocation; in fact, blocks are used extensively when writing  (1) asynchronous tasks. Also, very handy when it comes to writing (2) multithreading operations. 
 
 Other typical usages:
@@ -202,35 +208,40 @@ Retain cycles are somewhat dangerous with blocks because all the variables from 
 
 
 
-2. controllers
-   instantiating VCs
+- Static Analyzer PF227
+- Clean PF229
+- Running on a Device PF230
+- Gauges and Instruments PF238
+
+## ViewControllers
+* instantiating VCs
      - initWithCoder
      - initWithNibName - why?
 
-   UIViewController - lifecycle
-     - Instantiating a Storyboard’s View Controller Programmatically AVC
-     - Segues Automatically Instantiate the Destination View Controller AVC
-        - where in the VC lifecycle?
-     - Transitioning to a New Storyboard Requires a Programmatic Approach AVC
-     - Displaying a View Controller’s Contents Programmatically AVC
-        how to show:
-           1. Make the view controller the root view controller of a window
-           2. Make it a child of a visible container view controller
-           3. Present it from another visible view controller
-           4. Present it using a popover (iPad only)
-      Anatomy of a Content View Controller AVC
-      Inititalizing A View Controller
-        Initializing a View Controller Loaded from a Storyboard  
-        Initializing View Controllers Programmatically
-      - Managing Memory Efficiently AVC
-      - Responding to Display-Related Notifications AVC
-         Determining Why a View’s Appearance Changed
-      - Using View Controllers in the Responder Chain AVC  
-      - Creating Custom Seques AVC
+* UIViewController - lifecycle P329
+  - Instantiating a Storyboard’s View Controller Programmatically AVC
+  - Segues Automatically Instantiate the Destination View Controller AVC
+    - where in the VC lifecycle?
+  - Transitioning to a New Storyboard Requires a Programmatic Approach AVC
+  - Displaying a View Controller’s Contents Programmatically AVC
+  - how to show:
+    - Make the view controller the root view controller of a window
+    - Make it a child of a visible container view controller
+    - Present it from another visible view controller
+    - Present it using a popover (iPad only)
+  - Anatomy of a Content View Controller AVC
+  - Inititalizing A View Controller
+    - Initializing a View Controller Loaded from a Storyboard  
+    - Initializing View Controllers Programmatically
+  - Managing Memory Efficiently AVC
+  - Responding to Display-Related Notifications AVC
+    - Determining Why a View’s Appearance Changed
+  - Using View Controllers in the Responder Chain AVC  
+  - Creating Custom Seques AVC
              
-   UINavigationController - embed in
-     UINavigationItem
-     UITabBarItem, UIBarButtonItem
+- UINavigationController - embed in
+  - UINavigationItem
+  - UITabBarItem, UIBarButtonItem
      
 ```
      // from http://stackoverflow.com/questions/24961671/push-segues-can-only-be-used-by-uinavigationcontroller-error
@@ -238,24 +249,99 @@ Retain cycles are somewhat dangerous with blocks because all the variables from 
      self presentViewController:recordNavigationController animated:YES completion:nil];
 ```
 
-   maintain a reference to controller that displays and holds your tasks:
-   @property (weak, nonatomic) id delegate; //IA61  and IA62
-   connectiong controllers in storyboard - IA62
-     - can be done only in context of Navigation Controller
-   prepareForSegue IA64  
+- maintain a reference to controller that displays and holds your tasks:
 
-2.5.   
+```
+   @property (weak, nonatomic) id delegate; //IA61  and IA62
+```   
+   * connectiong controllers in storyboard - IA62
+     - can be done only in context of Navigation Controller
+   * prepareForSegue IA64  
+
+
 ##views - UIView, UIControl, UIResponder, 
+
+
    subviews, setNeedsDisplay
 
+  * basis of what you see AND interactions P3
+    * view hierarchy P3
+
+UIView 
+
+* alpha
+* autoresizeSubviews
+* autoresizeMask
+* backgroundColor
+* bounds
+* center
+* clearsContextBeforeDrawing
+* clipToBounds
+* contentMode
+* contentScaleFactor
+* exclusiveTouch
+* frame
+* gestureRecognizers
+* hidden
+* layer
+* motionEffects
+* multipleTouchEnabled
+* opaque
+* restorationIdentifier
+* subviews
+* superview
+* tag
+* tintAdjustmentMode
+* tintColor
+* transform
+* userInteractionEnabled
+
+UIResponder
+Properties:
+
+* inputAccessoryView
+* inputView
+* keyCommands
+* textInputContextIdentifier
+* textInputMode
+* undoManager
+
+##### UIWindow
+various ways to get at UIWindow P6
+
+###### Subview and Superview
+* very flexible of overlapping and where things fit P7
+* clipping, set in clipToBounds property P9
+* a superview owns its subviews in the memory management sense much as an NSArray owns its elements P10
+
+* superview / subviews P10; subviews are indexed starting at 0
+* referring to other views - isDescendentOfView, viewWithTag, numeric tag (tag property)
+  * addSubView, removeFromSuperview P10
+   
+* methods that you can override: P10
+   1. didAddSubview / willRemoveSubview
+   2. didMoveToSuperview / willMoveToSuperview
+   3. didMoveToWindow / willMoveToWindow
+
+
+##### Visibility and Opacity
+  * set hidden to YES / NO P11
+  * a hidden view does not normally recieve touch events P11
+    
+ center P15
+ changing a view's bounds does not change its center; changing a views center does not change its bounds
+ 
+#### CGAffineTransform P16
+
+##### Graphics Context P58
+
+##### Keyframe Animation P134
 
   * X,Y coordinates
   * initWithFrame
 
-
-
-   representing pixels
-   capturing events
+  * representing pixels
+  * capturing events
      - where are actions defined?
      - can handle events in a UIViewController OR in UIView subclasses
 
@@ -267,7 +353,7 @@ Retain cycles are somewhat dangerous with blocks because all the variables from 
       - "CALayer has a `contents` property" but must be CGImage"
       - "Core Foundation types behave like Cocoa objects at runtime - known as toll-free-bridging"
 
-4. Events
+## Events
   - traditionally, events are created and captured at the level of UIViewController
      - can be be created in Storyboard or in code
      - in Storyboard, would need to drag from item to UIViewController
@@ -279,11 +365,29 @@ Retain cycles are somewhat dangerous with blocks because all the variables from 
      - simplest selector example   
 
 
+UIImage - iOS7 doesn't run on single pixels iPhones but does run on single pixel iPads
+
+
+## Gesture Recognizers
+* gesture recognizer P195
+* built-in UIGestureRecognizer subclasses 
+* subclassing Gesture Recognizers P203
+* Touch Delivery P208
+* Hit Testing P208
+   * multiple touch enabled P209
+   * exclusive touch P209
+   
+   "keep in mind that layers do not receive touches " P210
+   
+* hit-test munging P213
+* now, you can attach a UISwipeGestureRecognizer to the UIWebView P214
+* delaysTouchesBegan P215   
+
 ##AFNetworking and Networking
 
 classes:
 
-* NSURLConnection
+1. NSURLConnection
   * AFHTTPRequestOperation
   * AFHTTPRequestOperationManager
   * AFURLConnectionOperation
@@ -357,6 +461,34 @@ classes:
    - CredentialStore -   
    
 ## UICollectionView
+
+* UICollectionViewLayoutAttributes P460  
+  * adopts the UIDynamicItem protocol P470
+* UICollectionViewCell P460  
+  * has a highlighted property and a selected property P460  
+* UICollectionReusableView P460  
+* UICollectionReusableView P460  
+* UICollectionViewLayout P460  
+    two categories:  
+      1. static attributes (P460)  
+      2. dynamic attributes  (P461)  
+* UICollectionViewFlowLayout (P461)  
+    - scroll direction  
+    - a sectionInset (the margins for a section)  
+    - itemSize (along with a minimumInteritemSpacing and minimumLineSpacing)  
+    - headerReferenceSize  
+    - footerReferenceSize  
+* UICollectionViewDelegateFlowLayout protocol (P461)       
+ 
+##### Using a Collection View (P462)
+##### Custom Collection View Layouts (P465)
+
+* layoutAtrributesForItemAtIndexPath: which returns a single 
+* UICollectionViewLayoutAttributes
+   * examples from WWDC P467
+   * Switching Layouts (P469)
+  
+
 ## Autolayout
   - the status bar and your content IT256
   - text instead of icons IT260
@@ -366,58 +498,90 @@ classes:
     - enabling AutLayout IT268
     - Scrolling the Scrolls IT269
     - Table Views and Auto Layout IT277
-10. UIImage
-11. UIText
-   Text Kit  http://robots.thoughtbot.com/ios-text-kit-basics
-     - text kit architecture IT144
-     - dynamic type IT145
-     - Letterpress Effects IT151
-     - Exclusion Paths IT153
-     - Dynamic Text Formatting and Storage IT155
-        - Subclassing NSTextStorage
-      NSTextStorage, NSLayoutManager, NSTextContainer  
-12. UIKitDynamics
-13. NSAttributedString
-14. UIButton
-15. LoggingIn
-16. UIMapKit
-17. Custom Transitions
+    
+## UIImage
+  - imageNamed forces caching, CATileLayer 
+  
+## UIText
+* Text Kit  http://robots.thoughtbot.com/ios-text-kit-basics
+* text kit architecture IT144
+* dynamic type IT145
+* Letterpress Effects IT151
+* Exclusion Paths IT153
+* Dynamic Text Formatting and Storage IT155
+  * Subclassing NSTextStorage
+* NSTextStorage, NSLayoutManager, NSTextContainer  
+      
+## UIKitDynamics P174
+* UIPushBehavior P175
+* UICollisionBehavior P176
+* UIDynamicItemBehavior P176
+* UIDynamicAnimator P178
+   * delegate
+   * running 
+   * elapsedTime 
+   * updateItemsUsingCurrentState
+   
+  
+
+## NSAttributedString
+
+## UIButton
+
+##LoggingIn
+* see my example 
+  
+## UIMapKit
+
+
+## Custom Transitions
    - animateTransition IT112
    - transitionDelegate IT113
 
-  4 things
+##### 4 things
   1. custom transition
   2. custom dismissal
-    2.5. using other animation techniques; UIView screenshot, Keyframe animation
-  3. Navigation Controller Transitions
-  4. Interactive Transitions
+  3. using other animation techniques
+    - UIView screenshot
+    - Keyframe animation
+  4. Navigation Controller Transitions
+  5. Interactive Transitions
 
   9 steps: IT117
 
-  3 protocols:
-    1. UIViewControllerTransitionDelegate
-    2. UIViewControllerAnimatedTransitioning
-    3. UIViewControllerContextTransitioning
+##### 3 protocols:
+  1. UIViewControllerTransitionDelegate
+  - UIViewControllerAnimatedTransitioning
+  - UIViewControllerContextTransitioning
 
 
+##### transitions
   - transition API IT115
   - transition process IT117
   - spicing up the transition IT118
 
-  Navigation Controller Transitions IT128
-   - adding a flip animation controller IT129
-  Interactive Transitions
-    - adding an interaction controller IT134
-    - wiring it up IT138 
+##### Navigation Controller Transitions IT128
+  - adding a flip animation controller IT129
+   
+##### Interactive Transitions
+   - adding an interaction controller IT134
+   - wiring it up IT138 
 
-18. Container Controllers
+## Container Controllers
   https://github.com/objcio/issue-12-custom-container-transitions
   and 
   git@github.com:cflesner/CLFContainerViewController.git
-19. Page View Controllers
+  
+## Page View Controllers
+UIPageViewController P310 
+assign a dataSource 
+setViewControllers P310
+can have a UIPageViewControllerDelegate
 
-UIViewControllerAnimatedTransitioning,  transition context, This container view is where the animation actually takes place
-20. Xcode 
+
+???UIViewControllerAnimatedTransitioning,  transition context, This container view is where the animation actually takes place
+
+## Xcode 
    Standard / Assistant / Version
   Assistant Editor: command-option-return
   with Storyboard element selected, command-option-1 through 6
@@ -436,7 +600,16 @@ UIViewControllerAnimatedTransitioning,  transition context, This container view 
 
 
 ## UIScrollView
+  - alwaysBounceHorizontal
+  - alwaysBounceVertical
+  - bounces
+  - bouncesZoom
+  - canCancelContentTouches
+  - contentInset
+  - contentOffset
   - contentSize
+  - decellerating
+  - decelleratingRate
 
 ## UIPopoverController
   - primarily for iPad
@@ -448,6 +621,7 @@ UIViewControllerAnimatedTransitioning,  transition context, This container view 
    - can clip to path
 
 ## CALayer - for border
+
 ## CLManager / MKMapView  
 * how to get Latitude and Longitude
 
