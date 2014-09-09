@@ -46,3 +46,52 @@ UIViewController
    * connectiong controllers in storyboard - IA62
      - can be done only in context of Navigation Controller
    * prepareForSegue IA64  
+
+
+## Custom Transitions
+   - animateTransition IT112
+   - transitionDelegate IT113
+
+##### 4 things
+  1. custom transition
+  2. custom dismissal
+  3. using other animation techniques
+    - UIView screenshot
+    - Keyframe animation
+  4. Navigation Controller Transitions
+  5. Interactive Transitions
+
+  9 steps: IT117
+
+##### 3 protocols:
+  1. UIViewControllerTransitionDelegate
+  - UIViewControllerAnimatedTransitioning
+  - UIViewControllerContextTransitioning
+
+
+##### transitions
+  - transition API IT115
+  - transition process IT117
+  - spicing up the transition IT118
+
+##### Navigation Controller Transitions IT128
+  - adding a flip animation controller IT129
+   
+##### Interactive Transitions
+   - adding an interaction controller IT134
+   - wiring it up IT138 
+
+## Container Controllers
+  https://github.com/objcio/issue-12-custom-container-transitions
+  and 
+  git@github.com:cflesner/CLFContainerViewController.git
+  
+## Page View Controllers
+UIPageViewController P310 
+assign a dataSource 
+setViewControllers P310
+can have a UIPageViewControllerDelegate
+
+
+???UIViewControllerAnimatedTransitioning,  transition context, This container view is where the animation actually takes place
+   
