@@ -94,4 +94,11 @@ can have a UIPageViewControllerDelegate
 
 
 ???UIViewControllerAnimatedTransitioning,  transition context, This container view is where the animation actually takes place
+
+## UIPopoverController
+  - primarily for iPad
+  
+## UIStoryboard, UIStoryboardSegue
+   - can have multiple storyboards
+
    

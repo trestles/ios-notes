@@ -59,16 +59,6 @@ Goal of this is to provide notes to someone who probably codes predominantly in 
   * Subclassing NSTextStorage
 * NSTextStorage, NSLayoutManager, NSTextContainer  
       
-## UIKitDynamics P174
-* UIPushBehavior P175
-* UICollisionBehavior P176
-* UIDynamicItemBehavior P176
-* UIDynamicAnimator P178
-   * delegate
-   * running 
-   * elapsedTime 
-   * updateItemsUsingCurrentState
-   
   
 
 ## NSAttributedString
@@ -99,21 +89,7 @@ Goal of this is to provide notes to someone who probably codes predominantly in 
 
 
 
-## UIPopoverController
-  - primarily for iPad
-  
-## UIStoryboard, UIStoryboardSegue
-   - can have multiple storyboards
 
-## UIBezierPath
-   - can clip to path
-
-## CALayer - for border
-
-## CLManager / MKMapView  
-* how to get Latitude and Longitude
-
-## Better Custom Drawing - PTL91    
  
 
 

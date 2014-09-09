@@ -93,3 +93,24 @@ various ways to get at UIWindow P6
       - "CALayer has a `contents` property" but must be CGImage"
       - "Core Foundation types behave like Cocoa objects at runtime - known as toll-free-bridging"
 
+
+## UIBezierPath
+   - can clip to path
+
+## CALayer - for border
+
+## Better Custom Drawing - PTL91   
+
+
+## UIKitDynamics P174
+* UIPushBehavior P175
+* UICollisionBehavior P176
+* UIDynamicItemBehavior P176
+* UIDynamicAnimator P178
+   * delegate
+   * running 
+   * elapsedTime 
+   * updateItemsUsingCurrentState
+   
+ 
+
