@@ -3,6 +3,7 @@ Goal of this is to provide notes to someone who probably codes predominantly in 
 - IOS 7 in Action - IA  
 - iOS 7 by Tutorials - IT  
 - NSHipster Fake Book - FB  
+- Core iOS Developer's Cookbook - CC
 - Apple Docs:
    - View Controller Programming Guide - AVC
 
@@ -213,50 +214,6 @@ Retain cycles are somewhat dangerous with blocks because all the variables from 
 - Running on a Device PF230
 - Gauges and Instruments PF238
 
-## ViewControllers
-* instantiating VCs
-     - initWithCoder
-     - initWithNibName - why?
-
-* UIViewController - lifecycle P329
-  - Instantiating a Storyboard’s View Controller Programmatically AVC
-  - Segues Automatically Instantiate the Destination View Controller AVC
-    - where in the VC lifecycle?
-  - Transitioning to a New Storyboard Requires a Programmatic Approach AVC
-  - Displaying a View Controller’s Contents Programmatically AVC
-  - how to show:
-    - Make the view controller the root view controller of a window
-    - Make it a child of a visible container view controller
-    - Present it from another visible view controller
-    - Present it using a popover (iPad only)
-  - Anatomy of a Content View Controller AVC
-  - Inititalizing A View Controller
-    - Initializing a View Controller Loaded from a Storyboard  
-    - Initializing View Controllers Programmatically
-  - Managing Memory Efficiently AVC
-  - Responding to Display-Related Notifications AVC
-    - Determining Why a View’s Appearance Changed
-  - Using View Controllers in the Responder Chain AVC  
-  - Creating Custom Seques AVC
-             
-- UINavigationController - embed in
-  - UINavigationItem
-  - UITabBarItem, UIBarButtonItem
-     
-```
-     // from http://stackoverflow.com/questions/24961671/push-segues-can-only-be-used-by-uinavigationcontroller-error
-     UINavigationController *recordNavigationController = (UINavigationController*)[self.storyboard instantiateViewControllerWithIdentifier:@"RecordNavigationController"];
-     self presentViewController:recordNavigationController animated:YES completion:nil];
-```
-
-- maintain a reference to controller that displays and holds your tasks:
-
-```
-   @property (weak, nonatomic) id delegate; //IA61  and IA62
-```   
-   * connectiong controllers in storyboard - IA62
-     - can be done only in context of Navigation Controller
-   * prepareForSegue IA64  
 
 
 ##views - UIView, UIControl, UIResponder, 
@@ -387,13 +344,47 @@ UIImage - iOS7 doesn't run on single pixels iPhones but does run on single pixel
 
 classes:
 
-1. NSURLConnection
+1. NSURLConnection - for previous versions!!!
   * AFHTTPRequestOperation
   * AFHTTPRequestOperationManager
   * AFURLConnectionOperation
 * NSURLSession
-  * AFHTTPSessionManager
+  * AFHTTPSessionManager \- this is the one you use; subclass of AFURLSessionManager
+    * baseURL
+    * requestSerializer
+    * responseSerializer
+    * manager - 
+    * initWithBaseURL
+    * initWithBaseURL:sessionConfiguration
+    * GET, HEAD, POST, POST, PUT, PATCH, DELETE
   * AFURLSessionManager
+    * session
+    * operationQueue
+    * responseSerializer
+    * securityPolicy
+    * reachabilityManager
+    * NSArray *tasks
+    * NSArray *dataTasks
+    * NSArray *uploadTasks
+    * NSArray *downloadTasks
+    * completionQueue
+    * completionGroup
+    * attemptsToRecreateUploadTasksForBackgroundSessions
+    * Setting Session Delegate Callbacks                        
+    * Setting Task Delegate Callbacks                            
+    * Setting Data Task Delegate Callbacks                        
+    * Setting Download Task Delegate Callbacks                        
+    * notifications
+      * AFNetworkingTaskDidResumeNotification
+      * AFNetworkingTaskDidCompleteNotification
+      * AFNetworkingTaskDidSuspendNotification
+      * AFURLSessionDidInvalidateNotification
+      * AFURLSessionDownloadTaskDidFailToMoveFileNotification
+      * AFNetworkingTaskDidCompleteResponseDataKey
+      * AFNetworkingTaskDidCompleteSerializedResponseKey
+      * AFNetworkingTaskDidCompleteResponseSerializerKey
+      * AFNetworkingTaskDidCompleteAssetPathKey
+      * AFNetworkingTaskDidCompleteErrorKey
 * Reachability
   * AFNetworkReachabilityManager
 * Security
@@ -445,20 +436,50 @@ classes:
 * custom UITableViewCells
   * updateCell model
 
-
-7.25 UICollectionView
-
 ## User Interface text field, button IA59  
+### Gestures and Touches CC1
+  - Recipe: Adding s simple direct manipulation interface
+  - Recipe: Adding Pan Gestuer Recognizers
+  - Recipe: using multiple gesture recognizers simultaneously
+  - Recipe: Constraining Movement CC14
+  - Recipe: Testing Touches CC15
+  - Recipe: Testing Against a Bitmap CC17
+  - Recipe: Drawing Touches Onscreen CC20
+  - Recipe: Dragging From a Scroll View CC37
+  - Recipe: Live Touch Feedback CC40
+  - Recipe: Adding Menus to Views CC45
+  
+### Building and Using Controls 
+  - The *UIControl* Class CC49
+  - Recipe: Building Buttons CC56
+  - Recipe: Animating Button Responses CC60
+  - Recipe: Subclassing UIControl CC72
+  - Recipe: Building a Star Slider CC76
+  - Recipe: Building a Touch Wheel CC79
+  - Recipe: Building a Pull Control CC83
+  - Recipe: Building a Custom Lock Control CC88
+  - Recipe: Image Gallery Viewer CC93
+  - Building Toolbars CC96
+  
+### Alerting the User 
+  - Talking Directly to Your User Through Alerts CC101
+  - Recipe: Using Blocks with Alerts CC105
+  - Recipe: Modal Progress Overlays CC117
+  - Recipe: Custom Modal Alert View CC119
+  - Recipe: Basic Popovers CC124
+  - Recipe: Local Notifications CC126    
+
 
 ## TweetBook / Accounts Framework IA180
-   ACAccountStore IA182
-     ACAccountType IA182
-     ACAccount IA182
-       accountType
-       credential
-       identifier
-       username
-   - CredentialStore -   
+
+- ACAccountStore IA182
+  - ACAccountType IA182
+  - ACAccount IA182
+    - accountType
+    - credential
+    - identifier
+    - username
+- CredentialStore
    
 ## UICollectionView
 
