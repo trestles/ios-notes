@@ -1,18 +1,63 @@
 
 
-UIViewController
 
-## ViewControllers
-* instantiating VCs
-     - initWithCoder
-     - initWithNibName - why?
 
-* UIViewController - lifecycle P329
-  - Instantiating a Storyboard’s View Controller Programmatically AVC
-  - Segues Automatically Instantiate the Destination View Controller AVC
+
+# ViewControllers
+
+## instantiating VCs
+
+     * initWithCoder
+     * initWithNibName - why?; load from Storyboard "freeze-dried"
+
+## UIViewController - lifecycle P329
+  - lifecycle S5-25:00
+     - series of methods that you can override 
+     - creation
+       - most are instantiated out of storyboards / least important step
+     - after creation
+       - outlets get set 
+       - appearing / disappearing 
+       - geometry changes
+       - low-memory situations
+       - at each step, a method is called
+     - methods
+       - viewDidLoad - a an exceptionally good place to put setup code
+          - outlets WILL be set here     
+          - will only be called once in the lifetime of your controller
+          - however, there are limits - geometry code should not be here; the geometry of your view is not set here
+       - viewWillAppear  / viewDidAppear
+         - don't put one-time initialization here since this will be called multiple times
+         - put here for data that might have changed S
+         - geometry IS set here - geometry could change after here
+       - viewWillDisappear / viewDidDisappear
+         - stop using resources     
+       - view{Will, Did}LayoutSubviews  
+       - Autorotation
+         - viewController returns YES from shouldAutoRotate
+         - viewController returns new orientation in supportedInterfaceOrientations
+         - application allows rotation to orientation
+  - didRecieveMemoryWarning S5-38:00
+    - set strong pointers to nil 
+    - only really images; sitting in the heap
+  -viewController creation
+    - your init method is not called
+    - awakeFromNib S5-43:00
+       - outlets will NOT be set here
+    - designated initializer is initWithNibName S5-44:00             
+  - CREATION SUMMARY (S slide)
+     - instantiated
+     - awakeFromNib
+     - outlets get set
+     - viewDidLoad
+     - (when geometry is determined) - viewWillLayoutSubviews
+     - viewWillAppear / viewDidDisappear - can 
+         
+#### Instantiating a Storyboard’s View Controller Programmatically AVC
+#### Segues Automatically Instantiate the Destination View Controller AVC
     - where in the VC lifecycle?
-  - Transitioning to a New Storyboard Requires a Programmatic Approach AVC
-  - Displaying a View Controller’s Contents Programmatically AVC
+####Transitioning to a New Storyboard Requires a Programmatic Approach AVC
+#### Displaying a View Controller’s Contents Programmatically AVC
   - how to show:
     - Make the view controller the root view controller of a window
     - Make it a child of a visible container view controller
@@ -29,7 +74,8 @@ UIViewController
   - Creating Custom Seques AVC
              
 - UINavigationController - embed in
-  - UINavigationItem
+  - UINavigationController
+    - topbar 44points
   - UITabBarItem, UIBarButtonItem
      
 ```
@@ -52,7 +98,7 @@ UIViewController
    - animateTransition IT112
    - transitionDelegate IT113
 
-##### 4 things
+##### 4 things (that's five)
   1. custom transition
   2. custom dismissal
   3. using other animation techniques

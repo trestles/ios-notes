@@ -6,6 +6,8 @@ Goal of this is to provide notes to someone who probably codes predominantly in 
 - Core iOS Developer's Cookbook - CC
 - Apple Docs:
    - View Controller Programming Guide - AVC
+- Stanford from 2013 - S
+
 
 - Programming iOS7 - P  
 - iOS7 Programming Fundamentals PF

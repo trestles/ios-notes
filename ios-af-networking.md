@@ -21,7 +21,7 @@ classes:
     * initWithBaseURL
     * initWithBaseURL:sessionConfiguration
     * GET, HEAD, POST, POST, PUT, PATCH, DELETE
-  * AFURLSessionManager
+  * AFURLSessionManager - do you use this?
     * session
     * operationQueue
     * responseSerializer
@@ -54,8 +54,8 @@ classes:
 * Security
   * AFSecurityPolicy
 * Serialization
-  * AFURLRRequestSerialization
-  * AFURLResponseSerialization
+  * AFURLRRequestSerialization - is this JSON only?
+  * AFURLResponseSerialization - what about this? 
 * Support Files
 * UIKit
   * AFNetworkActivityIndicatorManager
@@ -83,5 +83,6 @@ classes:
    }
 ```
    - NSOperation
+   - 
 
 ￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼

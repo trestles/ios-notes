@@ -1,7 +1,6 @@
 
-Objective C
+#Objective C
 
-### Objective-C
 
 * interface (.h) / implementation (.m) PF 77-80
     - in iterface file:
@@ -13,7 +12,9 @@ Objective C
        - conforms to protocol information
 
    
-
+- heap
+- stack 
+- local variables
 - in implementation file:   
   private variables  
   method implementations
@@ -25,10 +26,12 @@ Objective C
 * Class Methods PF81
 * The Secret Life of Classes PF82
 
+##Protocols
 * protocols PF272
 * Informal Protocols PF276
 * Optional Methods PF277
 
+##Property Lists
 * Property Lists PF292
 * The Secret Life of NSObject PF293
 
@@ -83,6 +86,28 @@ Objective C
 * Categories PF268
   * splitting a class PF270 
   * class extensions PF271
+* Designated Initializer
+
+
+
+##iOS Specific
+####maing thread of execution
+####Application States
+
+
+##NSString
+
+##Number Values
+####NSNumber
+####NSUInteger
+
+
+##NSDictionary
+
+
+##NSObject
+
+##NS(Mutable)Array
 
 
 
@@ -157,6 +182,8 @@ Other typical usages:
 - handling asynchronous notifications
 - as lambda functions, for iterations (sorting, enumerations, and the like)
 - UIView animations and transitions
+
+##NSOperationQueue
 
 ####Understanding Automatic Reference Counting
 

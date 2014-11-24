@@ -3,6 +3,8 @@
 
 
    subviews, setNeedsDisplay
+   
+   setNeedsLayout
 
   * basis of what you see AND interactions P3
     * view hierarchy P3
@@ -11,7 +13,7 @@ UIView
 
 * alpha
 * autoresizeSubviews
-* autoresizeMask
+* autoresizeMask  // important!!!
 * backgroundColor
 * bounds
 * center
@@ -46,6 +48,17 @@ Properties:
 * textInputMode
 * undoManager
 
+can Animate:
+  @property frame
+  @property bounds
+  @property center
+  @property transform
+  @property alpha
+  @property backgroundColor
+  @property contentStretch
+
+
+
 ##### UIWindow
 various ways to get at UIWindow P6
 
@@ -70,6 +83,12 @@ various ways to get at UIWindow P6
     
  center P15
  changing a view's bounds does not change its center; changing a views center does not change its bounds
+ 
+#### setupMethods
+#### drawRect
+  - really just for drawing like UIBezierPath or UIView animateWithDuration
+  - setNeedsDisplay
+  - layoutSubviews
  
 #### CGAffineTransform P16
 
@@ -97,7 +116,8 @@ various ways to get at UIWindow P6
 ## UIBezierPath
    - can clip to path
 
-## CALayer - for border
+## CALayer 
+  - for borders
 
 ## Better Custom Drawing - PTL91   
 
