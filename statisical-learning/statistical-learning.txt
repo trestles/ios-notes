@@ -1,5 +1,12 @@
 
 
+DATA SETS:
+Advertising Data
+Auto Data Set
+Income Data Set
+Credit Data Set
+Boston Data Set
+
 
 K-Nearest Neighbors P39
 
@@ -19,7 +26,6 @@ Figure 2-13 P38
 
 
 Ch 3 Linear Regression
-Advertising Data!!!
 
 
 
@@ -41,17 +47,37 @@ Estimating the Regression Coefficients P73
 3.2.2
 One: Is there a relationship between the Response and Predictors? P75
 
+F-Statistic P75
 
-Two: Deciding on Important Variables
-Forward Selection
+p-value P76
 
-Backward Selection
-
-
-Mixed Selection
 "the p-values for variables can become larger as new predictors are added to the model" P76
 
-Three: Model Fit
+
+Two: Deciding on Important Variables P78
+Forward Selection P78
+Backward Selection P79
+
+
+Mixed Selection P79
+
+Three: Model Fit P79
+
+RSE P80 
+
+Four: Predictions P81
+
+3.3.2 Extensions of the Linear Model P86
+  - removing the additive assumption P87
+  - non-linear relationships P87
+
+3.3.3 Potential Problems
+  1. Non-linearity of the data
+  2. correlation of the error terms
+  3. non-constant variance of Error Terms
+  4. Outliers
+  5. High Leverage Points
+  6. Collinearity
 
 
 3.4 The Marketing Plan for Advertising Plan
