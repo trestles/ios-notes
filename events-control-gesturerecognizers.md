@@ -1,4 +1,8 @@
 
+START OF MIRRORING OF THIS
+
+## What is MVC?
+
 ## Events
   - traditionally, events are created and captured at the level of UIViewController
      - can be be created in Storyboard or in code
